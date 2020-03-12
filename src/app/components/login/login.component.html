@@ -1,0 +1,48 @@
+<div class="container fundooContainer">
+  <div class="row fundooRow">
+    <div class="fundooColumn">
+      <div class="FundooAdminHeader">
+        <span class="F_Class">F</span>
+        <span class="U_Class">u</span>
+        <span class="N_Class">n</span>
+        <span class="D_Class">d</span>
+        <span class="O_Class">o</span>
+        <span class="O2_Class">o</span>
+      </div>
+      <h1 id="FundooAdminTitle">
+        <span>Admin Sign In</span>
+      </h1>
+      <div class="headingSubText">
+        <span>
+          continue to notes
+        </span>
+      </div>
+      <div class="fundooAdminloginField">
+        <div class="alert alert-danger" *ngIf="(errorMsg == null || errorMsg == '') ? false : true" role="alert">
+          {{ errorMsg }}
+          <button type="button" class="close" (click)="removeError()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="adminLoginInformation" (ngSubmit)="adminLoginData(adminLoginInformation.value)" novalidate >
+          <div class="form-group">
+            <label class="inputFieldLabel" for="signInEmail">Email address</label>
+            <input type="email" class="form-control" formControlName="adminEmail" required
+             id="signInEmail" aria-describedby="emailHelp">
+             <small *ngIf="hasError('adminEmail', 'required')" class="text-danger">Email is Required</small>
+            <small *ngIf="hasError('adminEmail', 'email')" class="text-danger">Email is Invalid</small>
+          </div>
+          <div class="form-group">
+            <label class="inputFieldLabel" for="signInPassword">Password</label>
+            <input type="password" class="form-control" formControlName="adminPassword" required id="signInPassword">
+            <small *ngIf="hasError('adminPassword', 'required')" class="text-danger">Password is Required</small>
+            <small *ngIf="hasError('adminPassword', 'minlength')" class="text-danger">Password Length should be more than 5</small>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Sign In</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
