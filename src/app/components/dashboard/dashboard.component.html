@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" >Admin Panel</a>
+
+  <ul class="navbar-nav applicationTitle">
+    <li class="nav-item">
+      <a class="nav-link" >Fundoo Notes</a>
+    </li>
+  </ul>
+
+  <div class="logoutDiv">
+    <button class="btn btn-success" (click)="adminLogout()" type="button">Logout</button>
+  </div>
+</nav>
+
+
+<div class="container advanceBasicContainer">
+  <div class="row justify-content-center alert alert-danger"
+   *ngIf="(basicAdvanceError == null || basicAdvanceError == '') ? false : true" role="alert">
+    {{ basicAdvanceError }}
+    <button type="button" class="close" data-dismiss="alert"  aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>  
+  <div class="row justify-content-between">
+    <div class="col-3 userStyle">
+      Basic User {{ basicUserCount }}
+    </div>
+    <div class="col-4 userStyle">
+      Advance User {{ advanceUserCount }}
+    </div>
+  </div>
+</div>
+
+<div class="container displayUser">
+  <div class="row justify-content-center">
+    <div class="col">
+      <table class="table table-hover table-bordered" *ngIf="(userList.length == 0) ? false : true" >
+        <thead class="thead-light">
+          <tr>
+            <th>Sr. No</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email-Id</th>
+            <th>Service</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let user of userList; let num = index">
+          <tr>
+            <td>{{ num }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.emailId }}</td>
+            <td>{{ user.service }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ul class="pagination justify-content-center" style="margin:20px 0">
+        <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
+        <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+      </ul>
+
+    </div>
+  </div>
+</div>
