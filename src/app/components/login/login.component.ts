@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Adminservice } from '../../services/admin/admin.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Adminlogin } from 'src/app/Model/adminlogin';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   errorMsg: string;
   adminLoginInformation: FormGroup;
 
-  constructor(private admin: Adminservice) { }
+  constructor(private admin: Adminservice, private router: Router) { }
 
   ngOnInit() {
 
@@ -65,12 +66,16 @@ export class LoginComponent implements OnInit {
         if(data.status) {
           localStorage.removeItem("fundooAdminToken");
           localStorage.setItem("fundooAdminToken", data.token);
+          this.router.navigate(['dashboard']);
         }
         else
           this.errorMsg = data.message;
       },
       error => {
-        console.log(error.error);
+        if(error.error.message)
+          this.errorMsg = error.error.message;
+        else
+          this.errorMsg = "Connection to the server failed.";
       })
     
 

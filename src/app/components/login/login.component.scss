@@ -64,3 +64,23 @@
     letter-spacing: .1px;
     line-height: 1.5;
 }
+
+
+@media only screen and (max-width: 600px) {
+
+    .container {
+        max-width: unset;
+    }
+
+    .fundooRow{
+        align-items: start;
+    }
+
+    .fundooColumn{
+        padding-top: 25px;
+        width: 100%;
+        border: none;
+        
+    }
+
+}
