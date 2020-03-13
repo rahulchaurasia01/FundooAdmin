@@ -16,4 +16,8 @@ export class Adminservice {
     return this.httpService.get("Admin/Statistics", true);
   }
 
+  GetAllUser() {
+    return this.httpService.get("Admin/Users", true);
+  }
+
 }
